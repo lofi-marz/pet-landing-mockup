@@ -3,9 +3,15 @@ import Head from 'next/head';
 import clsx from 'clsx';
 import { text, title } from '../fonts';
 import pets from '../dogandcat.png';
-import Image from 'next/image';
+import Image, { ImageProps } from 'next/image';
 import { FaGlasses, FaHeart, FaShower } from 'react-icons/fa';
 import { ImageGallery } from '@/components/ImageGallery';
+import { WithChildrenProps } from '../types';
+
+import pet1 from 'images/pet1.jpeg';
+import pet2 from 'images/pet2.jpeg';
+import pet3 from 'images/pet3.jpeg';
+
 export default function Home() {
     return (
         <div
@@ -19,13 +25,14 @@ export default function Home() {
             </Head>
             <Intro />
             <Gallery />
+            <Testimonials />
         </div>
     );
 }
 
 function Intro() {
     return (
-        <div className="flex h-[36rem] w-full flex-col items-center justify-center bg-[#f4a261] text-white md:h-[90vh]">
+        <div className="flex h-[36rem] w-full flex-col items-center justify-center bg-secondary text-light md:h-[90vh]">
             <NavBar />
             <main className="relative flex w-full grow items-start justify-center py-12 px-4 md:items-center md:justify-start md:px-12">
                 <header
@@ -52,12 +59,12 @@ function Gallery() {
     return (
         <div
             className={clsx(
-                'mt-48 flex h-screen w-full flex-col items-center justify-center gap-14 text-[#e76f51]',
+                'mt-48 flex min-h-screen w-full flex-col items-center justify-center gap-14 text-primary',
                 text.className
             )}>
             <h1
                 className={clsx(
-                    'text-center text-4xl text-[#e76f51] md:text-8xl',
+                    'text-center text-4xl text-primary md:text-8xl',
                     title.className
                 )}>
                 Your pet deserves <br /> to be pampered!
@@ -76,10 +83,92 @@ function Gallery() {
                     Safe Drying
                 </div>
             </div>
-            <button className="flex flex-row gap-12 rounded-full bg-[#e76f51] px-8 py-4 text-2xl text-white">
+            <button className="flex flex-row gap-12 rounded-full bg-primary px-8 py-4 text-2xl text-white">
                 Book an Appointment
             </button>
             <ImageGallery />
         </div>
+    );
+}
+
+function Testimonial({
+    className,
+    children,
+}: WithChildrenProps & { className?: string }) {
+    const names = [
+        'Abi',
+        'Brian',
+        'Carl',
+        'Daniella',
+        'Edward',
+        'Ruby',
+        'John',
+        'Alan',
+    ];
+    const locations = [
+        'Nottingham',
+        'Manchester',
+        'London',
+        'York',
+        'Brighton',
+    ];
+    const randomName = names[Math.floor(Math.random() * names.length)];
+    const randomLocation =
+        locations[Math.floor(Math.random() * locations.length)];
+    console.log(children);
+
+    return (
+        <div
+            className={clsx(
+                'text-md flex aspect-[3/4] h-96 flex-col items-center justify-between rounded-md bg-white p-6 font-light text-secondary shadow',
+                className
+            )}>
+            {children}
+            <div className="w-full text-start font-bold">
+                {randomName}, {randomLocation}
+            </div>
+        </div>
+    );
+}
+
+function Testimonials() {
+    return (
+        <div className="flex min-h-[120vh] w-full flex-col items-center justify-center gap-12 bg-secondary px-4 py-24 md:p-24">
+            <h2
+                className={clsx(
+                    'text-center text-4xl text-primary md:w-1/2 md:text-7xl',
+                    title.className
+                )}>
+                What Our Happy Clients Say
+            </h2>
+            <div className="flex grow flex-wrap items-center items-center justify-center justify-center gap-24">
+                <Testimonial className="md:mb-24">
+                    <TestimonialImage src={pet1} alt="" />
+                    &quot;They do a great job making Milo look so lovely. The
+                    staff are knowledgeable and friendly, always willing to give
+                    help and advice. Would definitely recommend!&quot;
+                </Testimonial>
+                <Testimonial className="md:mt-12">
+                    &quot;They do a great job making Milo look so lovely. The
+                    staff are knowledgeable and friendly, always willing to give
+                    help and advice. Would definitely recommend!&quot;
+                </Testimonial>
+                <Testimonial className="md:mb-12">
+                    &quot;They do a great job making Milo look so lovely. The
+                    staff are knowledgeable and friendly, always willing to give
+                    help and advice. Would definitely recommend!&quot;
+                </Testimonial>
+            </div>
+        </div>
+    );
+}
+
+function TestimonialImage({ src, alt }: ImageProps) {
+    return (
+        <Image
+            src={src}
+            alt={alt}
+            className="aspect-square h-24 w-24 rounded-full"
+        />
     );
 }

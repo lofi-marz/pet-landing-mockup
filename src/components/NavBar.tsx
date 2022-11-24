@@ -7,7 +7,7 @@ function Logo() {
     return (
         <div
             className={clsx(
-                'flex items-center justify-center gap-2 text-2xl font-semibold text-[#e76f51]',
+                'flex items-center justify-center gap-2 text-2xl font-semibold text-primary',
                 title.className
             )}>
             <div className="text-4xl">
@@ -20,7 +20,7 @@ function Logo() {
 
 function NavItem({ children }: WithChildrenProps) {
     return (
-        <button className="rounded-full px-8 py-1  transition-all hover:bg-[#e76f51]">
+        <button className="rounded-full px-8 py-1  transition-all hover:bg-primary">
             {children}
         </button>
     );

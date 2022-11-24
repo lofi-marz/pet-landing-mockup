@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 
 export function ImageGallery() {
     return (
-        <div className="flex h-48 flex-wrap items-center justify-center gap-4">
+        <div className="grid w-full max-w-screen-xl grid-cols-2 grid-rows-2 gap-2 p-4 lg:grid-cols-4 lg:grid-rows-1">
             <GalleryImage src={grooming1} alt="dog1" />
             <GalleryImage src={grooming2} alt="dog2" />
             <GalleryImage src={grooming3} alt="dog3" />
@@ -28,7 +28,8 @@ function GalleryImage({ src, alt }: ImageProps) {
             <motion.div
                 variants={imageVariants}
                 initial="nohover"
-                whileHover="hover">
+                whileHover="hover"
+                className="h-full w-full object-cover">
                 <Image src={src} alt={alt} className="h-full object-cover" />
             </motion.div>
         </div>
