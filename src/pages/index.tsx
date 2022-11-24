@@ -5,6 +5,7 @@ import { text, title } from '../fonts';
 import pets from '../dogandcat.png';
 import Image from 'next/image';
 import { FaGlasses, FaHeart, FaShower } from 'react-icons/fa';
+import { ImageGallery } from '@/components/ImageGallery';
 export default function Home() {
     return (
         <div
@@ -51,7 +52,7 @@ function Gallery() {
     return (
         <div
             className={clsx(
-                'flex h-screen w-full flex-col items-center justify-center gap-14 text-[#e76f51]',
+                'mt-48 flex h-screen w-full flex-col items-center justify-center gap-14 text-[#e76f51]',
                 text.className
             )}>
             <h1
@@ -75,9 +76,10 @@ function Gallery() {
                     Safe Drying
                 </div>
             </div>
-            <button className="flex flex-row gap-12 rounded-full bg-[#e76f51] px-8 py-4 text-3xl text-white">
+            <button className="flex flex-row gap-12 rounded-full bg-[#e76f51] px-8 py-4 text-2xl text-white">
                 Book an Appointment
             </button>
+            <ImageGallery />
         </div>
     );
 }
