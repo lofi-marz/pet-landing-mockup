@@ -8,9 +8,9 @@ import { FaGlasses, FaHeart, FaShower } from 'react-icons/fa';
 import { ImageGallery } from '@/components/ImageGallery';
 import { WithChildrenProps } from '../types';
 
-import pet1 from 'images/pet1.jpeg';
-import pet2 from 'images/pet2.jpeg';
-import pet3 from 'images/pet3.jpeg';
+import pet1 from 'images/pet1.webp';
+import pet2 from 'images/pet2.webp';
+import pet3 from 'images/pet3.webp';
 
 export default function Home() {
     return (
@@ -59,12 +59,12 @@ function Gallery() {
     return (
         <div
             className={clsx(
-                'mt-48 flex min-h-screen w-full flex-col items-center justify-center gap-14 text-primary',
+                'mt-48 flex min-h-screen w-full flex-col items-center justify-center gap-14 px-4 text-primary md:px-12',
                 text.className
             )}>
             <h1
                 className={clsx(
-                    'text-center text-4xl text-primary md:text-8xl',
+                    'text-center text-4xl md:text-8xl',
                     title.className
                 )}>
                 Your pet deserves <br /> to be pampered!
@@ -120,7 +120,7 @@ function Testimonial({
     return (
         <div
             className={clsx(
-                'text-md flex aspect-[3/4] h-96 flex-col items-center justify-between rounded-md bg-white p-6 font-light text-secondary shadow',
+                'text-md flex aspect-[3/4] h-96 flex-col items-center justify-between gap-8 rounded-md bg-white p-6 font-light text-secondary shadow',
                 className
             )}>
             {children}
@@ -149,11 +149,13 @@ function Testimonials() {
                     help and advice. Would definitely recommend!&quot;
                 </Testimonial>
                 <Testimonial className="md:mt-12">
+                    <TestimonialImage src={pet2} alt="" />
                     &quot;They do a great job making Milo look so lovely. The
                     staff are knowledgeable and friendly, always willing to give
                     help and advice. Would definitely recommend!&quot;
                 </Testimonial>
                 <Testimonial className="md:mb-12">
+                    <TestimonialImage src={pet3} alt="" />
                     &quot;They do a great job making Milo look so lovely. The
                     staff are knowledgeable and friendly, always willing to give
                     help and advice. Would definitely recommend!&quot;
@@ -165,10 +167,10 @@ function Testimonials() {
 
 function TestimonialImage({ src, alt }: ImageProps) {
     return (
-        <Image
-            src={src}
-            alt={alt}
-            className="aspect-square h-24 w-24 rounded-full"
-        />
+        <div className="flex h-full w-full items-center justify-center">
+            <div className="aspect-square h-28  overflow-clip rounded-full">
+                <Image src={src} alt={alt} className="object-cover" />
+            </div>
+        </div>
     );
 }

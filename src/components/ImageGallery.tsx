@@ -1,8 +1,8 @@
 import { motion, useAnimationControls, Variants } from 'framer-motion';
-import grooming1 from 'images/grooming-1.jpg';
-import grooming2 from 'images/grooming-2.jpg';
-import grooming3 from 'images/grooming-3.jpg';
-import grooming4 from 'images/grooming-4.jpg';
+import grooming1 from 'images/grooming-1.webp';
+import grooming2 from 'images/grooming-2.webp';
+import grooming3 from 'images/grooming-3.webp';
+import grooming4 from 'images/grooming-4.webp';
 import Image, { ImageProps } from 'next/image';
 import { useEffect, useState } from 'react';
 
