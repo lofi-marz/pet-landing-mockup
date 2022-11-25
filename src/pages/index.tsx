@@ -11,6 +11,7 @@ import { WithChildrenProps } from '../types';
 import pet1 from 'images/pet1.webp';
 import pet2 from 'images/pet2.webp';
 import pet3 from 'images/pet3.webp';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
     return (
@@ -90,32 +91,31 @@ function Gallery() {
         </div>
     );
 }
+const names = [
+    'Abi',
+    'Brian',
+    'Carl',
+    'Daniella',
+    'Edward',
+    'Ruby',
+    'John',
+    'Alan',
+];
+const locations = ['Nottingham', 'Manchester', 'London', 'York', 'Brighton'];
 
 function Testimonial({
     className,
     children,
 }: WithChildrenProps & { className?: string }) {
-    const names = [
-        'Abi',
-        'Brian',
-        'Carl',
-        'Daniella',
-        'Edward',
-        'Ruby',
-        'John',
-        'Alan',
-    ];
-    const locations = [
-        'Nottingham',
-        'Manchester',
-        'London',
-        'York',
-        'Brighton',
-    ];
-    const randomName = names[Math.floor(Math.random() * names.length)];
-    const randomLocation =
-        locations[Math.floor(Math.random() * locations.length)];
-    console.log(children);
+    const [randomName, setRandomName] = useState('');
+    const [randomLocation, setRandomLocation] = useState('');
+
+    useEffect(() => {
+        setRandomName(names[Math.floor(Math.random() * names.length)]);
+        setRandomLocation(
+            locations[Math.floor(Math.random() * locations.length)]
+        );
+    }, []); //To make sure the random generation only runs on the client
 
     return (
         <div
@@ -174,3 +174,5 @@ function TestimonialImage({ src, alt }: ImageProps) {
         </div>
     );
 }
+
+function Footer();
