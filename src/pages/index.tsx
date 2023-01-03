@@ -12,6 +12,8 @@ import pet1 from 'images/pet1.webp';
 import pet2 from 'images/pet2.webp';
 import pet3 from 'images/pet3.webp';
 import { useEffect, useState } from 'react';
+import { Footer } from '@/components/Footer';
+import { SocialsFooter } from '@/components/SocialsFooter';
 
 export default function Home() {
     return (
@@ -27,6 +29,8 @@ export default function Home() {
             <Intro />
             <Gallery />
             <Testimonials />
+            <Footer />
+            <SocialsFooter />
         </div>
     );
 }
@@ -174,5 +178,3 @@ function TestimonialImage({ src, alt }: ImageProps) {
         </div>
     );
 }
-
-function Footer();

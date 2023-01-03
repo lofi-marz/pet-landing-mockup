@@ -2,25 +2,11 @@ import { FaDog } from 'react-icons/fa';
 import { WithChildrenProps } from '../types';
 import clsx from 'clsx';
 import { title } from '../fonts';
-
-function Logo() {
-    return (
-        <div
-            className={clsx(
-                'flex items-center justify-center gap-2 text-2xl font-semibold text-primary',
-                title.className
-            )}>
-            <div className="text-4xl">
-                <FaDog />
-            </div>
-            Princess Paws
-        </div>
-    );
-}
+import { Logo } from '@/components/Logo';
 
 function NavItem({ children }: WithChildrenProps) {
     return (
-        <button className="rounded-full px-8 py-1  transition-all hover:bg-primary">
+        <button className="rounded-full px-8 py-1 transition-all hover:bg-primary">
             {children}
         </button>
     );
